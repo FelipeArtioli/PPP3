@@ -4,6 +4,9 @@
 #include <vector>
 using namespace std;
 
+const vector<string> numbers = {"zero", "one", "two",   "three", "four",
+                                "five", "six", "seven", "eight", "nine"};
+
 double calculation(char op, double a, double b) {
   switch (op) {
   case '+':
@@ -58,8 +61,6 @@ bool is_digit(string input) {
 
 double string_to_double(string value) {
 
-  const vector<string> numbers = {"zero", "one", "two",   "three", "four",
-                                  "five", "six", "seven", "eight", "nine"};
   bool digit_input = is_digit(value);
   if (digit_input) {
     return stoi(value);
