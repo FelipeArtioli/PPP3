@@ -8,5 +8,3 @@ int main(){
 }
 
 // Exercise description
-// Testing commit 2
-//
