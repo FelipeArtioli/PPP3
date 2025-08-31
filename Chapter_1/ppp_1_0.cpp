@@ -1,4 +1,4 @@
-// PPP - Chapter # - Exercise #
+// PPP - Chapter 1 - Exercise 1
 
 #include <iostream>
 using namespace std;
