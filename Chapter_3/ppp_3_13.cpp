@@ -4,13 +4,12 @@
 #include <vector>
 using namespace std;
 
-int main() {
+vector<int> primes = {};
 
-  int range{100};
+void prime_generator(int range) {
   vector<bool> is_prime(range + 1, true);
   is_prime[0] = false;
   is_prime[1] = false;
-
   for (int i = 2; i * i <= range; ++i) {
     if (is_prime[i]) {
       for (int j = i * i; j <= range; j += i) {
@@ -18,15 +17,28 @@ int main() {
       }
     }
   }
-  vector<int> primes = {};
-  for (int i = 0; i < (range + 1); ++i) {
+  for (int i = 2; i < (range + 1); ++i) {
     if (is_prime[i]) {
       primes.push_back(i);
     }
   }
+}
+
+void print_primes(int range) {
+  cout << "List of primes from 2 to " << range << ":\n";
   for (int i = 0; i < size(primes); ++i) {
-    cout << primes[i] << ", ";
+    cout << primes[i];
+    if (i == size(primes) - 1)
+      cout << ".\n";
+    else
+      cout << ", ";
   }
+}
+
+int main() {
+  int range{100};
+  prime_generator(range);
+  print_primes(range);
 }
 
 // Create a program to find all the prime numbers between 1 and 100.
