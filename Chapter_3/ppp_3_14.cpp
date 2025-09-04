@@ -39,16 +39,22 @@ int main() {
   cout << "Enter a value n to find the first n prime numbers:\n";
   int n{};
   int range{};
-  cin >> n;
-  if (n < 6)
-    range = 15; // hardcoded value for small n
-  else {
-    range = n * (log(n) + log(log(n)));    // prime number theorem estimate
-    range = static_cast<int>(range * 1.5); // safety margin
+  while (true) {
+    cin >> n;
+    if (n < 0) {
+      cout << "ERROR: Negative input.\n";
+      break;
+    }
+    if (n >= 0 && n < 6)
+      range = 15; // hardcoded value for small n
+    else {
+      range = n * (log(n) + log(log(n)));    // prime number theorem estimate
+      range = static_cast<int>(range * 1.5); // safety margin
+    }
+    prime_generator(range);
+    print_primes(n);
+    cout << '\n';
   }
-  prime_generator(range);
-  print_primes(n);
-  cout << '\n';
 }
 
 // Write a program that takes an input value n and then finds the first n
