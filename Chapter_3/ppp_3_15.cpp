@@ -10,6 +10,7 @@ int main() {
   vector<int> numbers = {};
   int curr_count{1}, max_count{1}, mode{};
   int input{};
+  cout << "Enter a set of numbers to find the mode of the sequence:\n";
   while (cin >> input) {
     if (input >= 0)
       numbers.push_back(input);
