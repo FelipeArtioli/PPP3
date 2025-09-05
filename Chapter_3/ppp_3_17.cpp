@@ -17,32 +17,40 @@ void quadratic_equation(double a, double b, double c) {
 
   cout << "x = " << x1 << " and x' = " << x2 << '\n';
 }
+
 void print_result(double a, double b, double c) {
-  cout << "Equation: " << a << "x²";
-  if (b >= 0)
-    cout << "+" << b << "x";
-  else
-    cout << b << "x";
-  if (c >= 0)
-    cout << "+" << c;
-  else
-    cout << c;
+  cout << "Equation: ";
+
+  if (a == 1) cout << "x²";
+  else if (a == -1) cout << "-x²";
+  else if (a != 0) cout << a << "x²";
+
+  if (b > 0) {
+    if (b == 1) cout << "+x";
+    else cout << "+" << b << "x";
+  } else if (b < 0) {
+    if (b == -1) cout << "-x";
+    else cout << b << "x";
+  }
+
+  if (c > 0) cout << "+" << c;
+  else if (c < 0) cout << c;
+
   cout << " = 0\n";
 }
+
 
 int main() {
   double a{}, b{}, c{};
 
   cout << "To solve a quadratic equation (ax²+bx+c=0), enter values for a, b "
           "and c:\n";
-  cin >> a;
 
+  cin >> a>> b >> c;
   if (a == 0) {
     cout << "'a' cannot be zero in a quadratic equation.\n";
-    return 0; // stop immediately
-  }
-
-  cin >> b >> c;
+    return 0;
+}
   print_result(a, b, c);
   quadratic_equation(a, b, c);
 }
