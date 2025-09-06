@@ -1,4 +1,4 @@
-# PPP3 Exercises Solutions
+# Solutions to "Programming -- Principles and Practice Using C++ (3rd Edition)"
 
 This repository contains my solutions to exercises and drills from "Programming -- Principles and Practice Using C++ (3rd Edition)" by Bjarne Stroustrup. My goal is to document my learning journey and provide examples that may help other beginners.
 > All exercises are implemented according to my understanding; multiple valid approaches exist.
