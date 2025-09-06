@@ -6,14 +6,6 @@
 
 using namespace std;
 
-void print(vector<string> names, vector<int> scores) {
-
-  for (int i = 0; i < names.size(); ++i) {
-    cout << names[i] << ": " << scores[i] << '\n';
-  }
-  cout << '\n';
-}
-
 bool check_repetition(vector<string> names) {
 
   sort(names.begin(), names.end());
