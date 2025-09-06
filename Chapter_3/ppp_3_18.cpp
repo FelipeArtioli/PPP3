@@ -30,7 +30,7 @@ int main() {
   string input_name{};
   vector<int> scores = {};
   int input_score{};
-  cout << "Enter a set of name-and value pairs, such as 'Joe 17'. Terminate "
+  cout << "Enter a set of name-and-value pairs, such as 'Joe 17'. Terminate "
           "input with 'NoName 0':\n";
   while (cin >> input_name >> input_score) {
     if (input_name == "NoName" && input_score == 0)
