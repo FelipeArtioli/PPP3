@@ -1,4 +1,5 @@
 // PPP - Chapter 2 - Exercise 9
+// Convert a spelled-out number (zero to four) to a digit
 
 #include <iostream>
 using namespace std;
@@ -7,6 +8,8 @@ int main() {
   string input{};
   cout << "Enter a spelled-out number from zero to four:\n";
   cin >> input;
+
+  // Match input to known words and print digit, or show error
   if (input == "zero")
     cout << "0\n";
   else if (input == "one")
