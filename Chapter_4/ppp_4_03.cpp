@@ -4,14 +4,14 @@
 using namespace std;
 
 double ctok(double c) {
-  double k = c + 273.25;
+  double k = c + 273.15;
   return k;
 }
 // converts Celsius to Kelvin
 int main() {
   double c = 0;
   cin >> c;
-  if (c <= -273.15) {
+  if (c < -273.15) {
     cerr << "ERROR: Temperature is below -273.15C, or 0K.\n";
     return 1;
   }
