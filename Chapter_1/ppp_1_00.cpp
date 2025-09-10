@@ -1,4 +1,5 @@
 // PPP - Chapter 1 - Exercise 0
+// Hello, World!
 
 #include <iostream>
 // This tells the compiler to include the input/output stream library.

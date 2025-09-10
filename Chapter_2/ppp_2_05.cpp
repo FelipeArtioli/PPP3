@@ -1,4 +1,5 @@
 // PPP - Chapter 2 - Exercise 5
+// Compare two doubles and show basic math operations
 
 #include <iostream>
 using namespace std;
@@ -21,6 +22,7 @@ int main() {
       cout << "Division by zero is impossible.\n\n";
     } else {
       cout << val1 << " / " << val2 << " = " << val1 / val2 << "\n\n";
+      // Doubles keep the decimal part when dividing.
     }
   }
 }

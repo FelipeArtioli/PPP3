@@ -3,30 +3,25 @@
 #include <iostream>
 using namespace std;
 
-void error(string error) { throw runtime_error{error}; }
-
 double ctok(double c) {
 
-  if (c < 273.15)
-    error("Temperature is below -273.15C or 0K\n");
+  if (c < -273.15)
+    throw runtime_error("Temperature is below -273.15C or 0K");
 
-  double k = c + 273.15;
-  return k;
+  return c + 273.15;
 }
 
-// converts Celsius to Kelvin
 int main() {
   double c = 0;
   cin >> c;
 
   try {
-    double k = ctok(c);
-    // declare input variable
-    // retrieve temperature to input variable
-    // convert temperature
+
+    auto k = ctok(c);
     cout << k << '\n';
-    // print out temperature
+
   } catch (exception &e) {
+
     cerr << e.what() << '\n';
     return 1;
   }

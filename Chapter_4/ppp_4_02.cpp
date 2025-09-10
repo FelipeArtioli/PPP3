@@ -4,7 +4,7 @@
 using namespace std;
 
 double ctok(double c) {
-  double k = c + 273.25;
+  double k = c + 273.15;
   return k;
 }
 // converts Celsius to Kelvin
