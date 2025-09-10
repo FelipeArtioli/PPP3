@@ -1,4 +1,5 @@
 // PPP - Chapter 2 - Exercise 10
+// Simple calculator with basic operations
 
 #include <iostream>
 using namespace std;
@@ -13,11 +14,15 @@ int main() {
 
   while (true) {
     cin >> operation;
+
+    // Exit loop if user types 'exit'
     if (operation == "exit") {
       break;
     }
+
     cin >> val_1 >> val_2;
 
+    // Perform operation or show error for invalid input / division by zero
     if (operation == "+" or operation == "plus") {
       result = val_1 + val_2;
     } else if (operation == "-" or operation == "minus") {
