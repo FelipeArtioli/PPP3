@@ -1,4 +1,5 @@
 // PPP - Chapter 2 - Exercise 8
+// Check if a number is even or odd
 
 #include <iostream>
 using namespace std;
@@ -7,10 +8,14 @@ int main() {
   int input{};
   cout << "Enter a number to test if they are even or odd: ";
   cin >> input;
+
+  // Stop if input is not a valid integer
   if (!cin) {
     cout << "ERROR: Invalid input.\n";
     return 0;
   }
+
+  // Check remainder when divided by 2 to determine even or odd
   if (input % 2 == 0)
     cout << input << " is an even number.\n";
   else
