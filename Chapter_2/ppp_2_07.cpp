@@ -1,4 +1,5 @@
 // PPP - Chapter 2 - Exercise 7
+// Sort three words in alphabetical order
 
 #include <iostream>
 using namespace std;
