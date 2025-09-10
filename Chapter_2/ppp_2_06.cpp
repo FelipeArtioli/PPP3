@@ -1,4 +1,5 @@
 // PPP - Chapter 2 - Exercise 6
+// Sort three numbers in ascending order
 
 #include <iostream>
 using namespace std;
@@ -7,10 +8,15 @@ int main() {
   int val_1{}, val_2{}, val_3{};
   cout << "Enter 3 numbers (or 0 0 0 to quit):\n";
   while (cin >> val_1 >> val_2 >> val_3) {
+    // Read three numbers in a loop
+
     if (val_1 == 0 and val_2 == 0 and val_3 == 0) {
+
+      // Exit if all inputs are zero
       cout << "Good bye!\n";
       return 0;
     }
+    //  Brute-force comparison extravaganza.
     if (val_1 <= val_2 and val_2 <= val_3) {
       cout << val_1 << ", " << val_2 << ", " << val_3 << '\n';
     } else if (val_1 <= val_3 and val_3 <= val_2) {
