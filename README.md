@@ -6,7 +6,7 @@ This repository contains my solutions to exercises and drills from "Programming 
 ## Structure
 
 Each chapter has its own folder containing the source code for exercises.
-> Since I have skipped a few, I'll later justified that in a list of all exercises.
+> Since I have skipped a few, I'll later justify that in a list of all exercises.
 
 ## Reference
 
