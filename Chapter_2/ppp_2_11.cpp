@@ -1,4 +1,5 @@
-// PPP - Chapter 2 - Exercise 10
+// PPP - Chapter 2 - Exercise 11
+// Count coins and calculate total value in dollars
 
 #include <iostream>
 using namespace std;
@@ -10,6 +11,7 @@ int main() {
   string plural_pennies{}, plural_nickels{}, plural_dimes{}, plural_quarters{},
       plural_halves{}, plural_dollars{};
 
+  // Ask user for how many of each coin type
   cout << "How many pennies do you have? ";
   cin >> pennies;
   cout << "How many nickels do you have? ";
@@ -23,6 +25,7 @@ int main() {
   cout << "How many dollars do you have? ";
   cin >> dollars;
 
+  // Determine singular or plural for each coin type
   if (pennies != 1)
     plural_pennies = "pennies";
   else
@@ -48,17 +51,20 @@ int main() {
   else
     plural_dollars = "dollar";
 
+  // Calculate total value in cents, then split into dollars and remaining cents
   int total = pennies + 5 * nickels + 10 * dimes + 25 * quarters + 50 * halves +
               100 * dollars;
   int only_dollars = total / 100;
   int only_cents = total % 100;
 
+  // Print the count of each coin type with correct singular/plural
   cout << "\nYou have " << pennies << " " << plural_pennies << ".\n";
   cout << "You have " << nickels << " " << plural_nickels << ".\n";
   cout << "You have " << dimes << " " << plural_dimes << ".\n";
   cout << "You have " << quarters << " " << plural_quarters << ".\n";
   cout << "You have " << halves << " " << plural_halves << ".\n";
   cout << "You have " << dollars << " " << plural_dollars << ".\n";
+  // Print total value formatted as dollars.cents
   cout << "The value of all your coins is " << only_dollars << ".";
   if (only_cents < 10)
     cout << "0";
