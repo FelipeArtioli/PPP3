@@ -16,7 +16,7 @@ double ftoc(double f) {
   if (f < -459.67)
     throw runtime_error("Temperature is below -459.67 F");
 
-  return f - 32  1.8);
+  return (f - 32) / 1.8;
 }
 
 pair<double, char> conversion(char unit, double temp) {
