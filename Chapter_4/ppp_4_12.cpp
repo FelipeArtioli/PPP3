@@ -1,28 +1,46 @@
 // PPP - Chapter 4 - 12
 // Bull and Cows (guessing game)
 
+#include <exception>
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 
 using namespace std;
 
-vector<char> curr_guess(char digit, vector<char> guess, int secret_size) {
-  for (int i = 0; i < secret_size; ++i) {
-    cin >> digit;
-    guess[i] = digit;
+vector<int> guess(vector<int> secret) {
+
+  vector<int> guess = {};
+  string input{};
+  cin >> input;
+
+  for (char c : input) {
+    // Validate input is a digit
+    if (c <= '/' || c >= ':') {
+      throw runtime_error("Only digits are allowed");
+    }
+    // Validate input length
+    if (input.size() != secret.size()) {
+      throw runtime_error("Too many or too few digits");
+    }
+    // Convert char digit to int
+    guess.push_back(c - '0');
   }
   return guess;
 }
 
-bool found_bulls(vector<char> guess, vector<char> secret) {
+bool found_bulls(vector<int> guess, vector<int> secret) {
 
   int bull{}, cow{};
 
   for (int i = 0; i < secret.size(); ++i) {
+
     bool is_bull = false;
+
     if (guess[i] == secret[i]) {
       ++bull;
       is_bull = true;
+
     } else
       for (int j = 0; j < secret.size(); ++j) {
         if (guess[i] == secret[j] && (!is_bull)) {
@@ -32,20 +50,24 @@ bool found_bulls(vector<char> guess, vector<char> secret) {
   }
 
   cout << bull << " bull and " << cow << " cow\n";
+  // Return true if all digits are bulls
   return bull == secret.size();
 }
 
 int main() {
 
-  vector<char> secret = {'1', '2', '3', '4'};
+  vector<int> secret = {1, 2, 3, 4};
   int secret_size = secret.size();
-  vector<char> guess = {'0', '0', '0', '0'};
-  char digit{};
   bool game_wincon = false;
 
+  cout << "Enter your " << secret.size() << "-digit guess:\n";
+
   while (!game_wincon) {
-    guess = curr_guess(digit, guess, secret_size);
-    game_wincon = found_bulls(guess, secret);
+    try {
+      game_wincon = found_bulls(guess(secret), secret);
+    } catch (exception &e) {
+      cerr << e.what() << '\n';
+    }
   }
   cout << "Congratulations, you won!\n";
 }
