@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// Read and validate a guess from the user
 vector<int> guess(vector<int> secret) {
 
   vector<int> guess = {};
@@ -29,6 +30,7 @@ vector<int> guess(vector<int> secret) {
   return guess;
 }
 
+// Compare guess to secret and count bulls and cows
 bool found_bulls(vector<int> guess, vector<int> secret) {
 
   int bull{}, cow{};
