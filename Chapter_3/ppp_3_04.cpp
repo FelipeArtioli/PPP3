@@ -1,4 +1,5 @@
 // PPP - Chapter 3 - Exercise 4
+// Compute sum, mean, min, and max of a sequence of numbers
 
 #include <algorithm>
 #include <iostream>
@@ -20,11 +21,15 @@ int main() {
     sum += value;
     distance.push_back(value);
   }
+  // Read values, compute running sum, store in vector
+
   mean = sum / distance.size();
+  // Compute mean
 
   sort(distance.begin(), distance.end());
   smaller = distance[0];
   larger = distance[distance.size() - 1];
+  // Sort vector, get smallest and largest values
 
   cout << "The sum is: " << sum << '\n';
   cout << "The mean is: " << mean << '\n';
