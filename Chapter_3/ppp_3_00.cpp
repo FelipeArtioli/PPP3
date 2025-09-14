@@ -1,4 +1,5 @@
 // PPP - Chapter 3 - Drill
+// Convert various units to meters, track min/max, and display totals
 
 #include <algorithm>
 #include <iostream>
@@ -6,7 +7,9 @@
 
 using namespace std;
 
+// Store all converted values
 vector<double> value;
+// Variables for input, conversion, min/max
 double temp{}, converted_temp{}, smaller{}, larger{};
 string unit{};
 
@@ -51,17 +54,22 @@ int main() {
       cout << "ERROR: invalid unit\n";
     } else {
       value.push_back(temp * convert_to_meters(unit));
+      // Store value in meters
 
       if (i == 0) {
         smaller = value[i];
         larger = value[i];
       }
+      // Initialize min/max with first value
+
       if (value[i] < smaller) {
         smaller = value[i];
       }
       if (value[i] > larger) {
         larger = value[i];
       }
+      // Update min/max
+
       if (unit == "m") {
         ;
       } // Do nothing
@@ -71,20 +79,24 @@ int main() {
       }
 
       smaller_or_larger(smaller, larger);
+      // Indicate if value is smallest or largest
 
       sort(value.begin(), value.end());
+      // Keep values sorted
 
       cout << "\nValues: ";
       for (int j = 0; j <= i; ++j) {
         cout << value[j] << " | ";
       }
       cout << "\n";
+      // Display sorted values
 
       double sum{};
       for (double x : value) {
         sum += x;
       }
       cout << "Total: " << sum << " m" << "\n\n";
+      // Show total sum in meters
 
       ++i;
     }
