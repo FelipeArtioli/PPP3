@@ -1,4 +1,5 @@
 // PPP - Chapter 3 - Exercise 5
+// Number guessing with binary search (user thinks of a number 1–100)
 
 #include <iostream>
 
@@ -15,17 +16,20 @@ int main() {
 
   while (min_number < max_number) {
     int mid = min_number + (max_number - min_number) / 2;
+    // Calculate middle point between current range
 
     cout << "Is your number <= " << mid << "? (y/n): ";
     char answer{};
     cin >> answer;
 
     switch (answer) {
-    case 'y': case 'Y':
-      max_number = mid;
+    case 'y':
+    case 'Y':
+      max_number = mid; // If yes, search lower half
       break;
-    case 'n': case 'N':
-      min_number = mid + 1;
+    case 'n':
+    case 'N':
+      min_number = mid + 1; // If no, search upper half
       break;
     default:
       cout << "Please answer with 'y' or 'n'.\n";
@@ -34,6 +38,7 @@ int main() {
   }
 
   cout << "\aYour number is " << min_number << "!\n";
+  // Once range collapses, min == max -> that's the guessed number
 }
 
 // Write a program to play a numbers guessing game. The user thinks of a
