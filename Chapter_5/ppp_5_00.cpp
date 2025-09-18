@@ -18,7 +18,36 @@
 
 */
 
-#include "/home/felipe/Documents/GIT/PPP3/support/std_lib_facilities.h"
+#include <iostream>
+#include <stdexcept>
+
+using namespace std;
+
+// functions replacing std_lib_facilities.h
+
+void error(string s) { throw runtime_error(s); }
+
+inline void keep_window_open() {
+  cin.clear();
+  cout << "Please enter a character to exit\n";
+  char ch;
+  cin >> ch;
+  return;
+}
+
+inline void keep_window_open(string s) {
+  if (s == "")
+    return;
+  cin.clear();
+  cin.ignore(120, '\n');
+  for (;;) {
+    cout << "Please enter " << s << " to exit\n";
+    string ss;
+    while (cin >> ss && ss != s)
+      cout << "Please enter " << s << " to exit\n";
+    return;
+  }
+}
 
 //------------------------------------------------------------------------------
 
@@ -147,6 +176,7 @@ double term() {
     case '*':
       left *= primary();
       t = ts.get();
+      break;
     case '/': {
       double d = primary();
       if (d == 0)
@@ -176,7 +206,7 @@ double expression() {
       t = ts.get();
       break;
     case '-':
-      left += term(); // evaluate Term and subtract
+      left -= term(); // evaluate Term and subtract
       t = ts.get();
       break;
     default:
@@ -191,15 +221,15 @@ double expression() {
 int main() {
   try {
     while (cin) {
+      double val = expression();
       Token t = ts.get();
 
       if (t.kind == 'q')
         break;           // 'q' for quit
       if (t.kind == ';') // ';' for "print now"
-        cout << "=" << t.value << '\n';
+        cout << "=" << val << '\n';
       else
         ts.putback(t);
-      t.value = expression();
     }
     keep_window_open();
   } catch (exception &e) {
