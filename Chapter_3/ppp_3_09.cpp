@@ -19,9 +19,9 @@ int main() {
   // Loop through each square until total >= least_amount or we run out of
   // squares
   for (int i = 1; total_grains <= least_amount and i <= board_size; ++i) {
-    total_grains += grains_on_square;
-    cout << i << "\t\t" << total_grains << "\n";
-    grains_on_square *= 2;
+    total_grains += grains_on_square;            // Add grains from this square
+    cout << i << "\t\t" << total_grains << "\n"; // Show progress
+    grains_on_square *= 2;                       // Double grains for next square
   }
 }
 

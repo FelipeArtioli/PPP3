@@ -1,4 +1,5 @@
 // PPP - Chapter 3 - Exercise 10
+//Chessboard Rice Problem (part 2)
 
 #include <iostream>
 using namespace std;
@@ -11,9 +12,9 @@ int main() {
   cout << "Square:" << "\t\t" << "Gifted grains:" << '\n';
 
   for (int i = 1; i <= board_size; ++i) {
-    total_grains += grains_on_square;
-    cout << i << "\t\t" << total_grains << "\n";
-    grains_on_square *= 2;
+    total_grains += grains_on_square;             // Add grains from this square
+    cout << i << "\t\t" << total_grains << "\n";  // Show progress
+    grains_on_square *= 2;                        // Double grains for next square
   }
 }
 
