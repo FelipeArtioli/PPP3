@@ -1,13 +1,14 @@
 // PPP - Chapter 3 - Exercise 9
+// Chessboard Rice Problem
 
 #include <iostream>
 using namespace std;
 
 int main() {
-  int least_amount{};
-  int grains_on_square{1};
-  int total_grains{};
-  constexpr int board_size{64};
+  int least_amount{};      // Minimum number of grains requested by the inventor
+  int grains_on_square{1}; // Grains on current square (starts with 1)
+  int total_grains{};      // Total accumulated grains so far
+  constexpr int board_size{64}; // Total squares on a chessboard
 
   cout << "Type the least amount of rice grains to gift the inventor: ";
   cin >> least_amount;
@@ -15,6 +16,8 @@ int main() {
 
   cout << "Square:" << "\t\t" << "Gifted grains:" << '\n';
 
+  // Loop through each square until total >= least_amount or we run out of
+  // squares
   for (int i = 1; total_grains <= least_amount and i <= board_size; ++i) {
     total_grains += grains_on_square;
     cout << i << "\t\t" << total_grains << "\n";
