@@ -1,9 +1,11 @@
 // PPP - Chapter 3 - Exercise 7
+// Number Spellout Converter (digit <-> word)
 
 #include <iostream>
 #include <vector>
 using namespace std;
 
+// Check if the input string contains only digits
 bool is_digit(string input) {
   for (char c : input) {
     if (c < '0' or c > '9')
@@ -12,6 +14,7 @@ bool is_digit(string input) {
   return true;
 }
 
+// Convert a digit string ("0"-"9") to its spelled-out word ("zero"-"nine")
 string digit_to_spellout(string input, vector<string> numbers) {
   string result{};
   int index = stoi(input);
@@ -23,6 +26,7 @@ string digit_to_spellout(string input, vector<string> numbers) {
   return result;
 }
 
+// Convert a spelled-out word ("zero"-"nine") back to a digit ("0"-"9")
 string spellout_to_digit(string input, vector<string> numbers) {
   string result{};
   for (int i = 0; i < 10; ++i) {
@@ -46,6 +50,7 @@ int main() {
 
   string input{};
 
+  // Keep reading user input
   while (cin >> input) {
     if (input == "exit") {
       break;
