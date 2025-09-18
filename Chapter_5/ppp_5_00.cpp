@@ -1,29 +1,12 @@
-//
-// This is example code from Chapter 6.7 "Trying the second version" of
-// "Software - Principles and Practice using C++" by Bjarne Stroustrup
-//
-
-/*
-    This file is known as calculator02buggy.cpp
-
-    I have inserted 5 errors that should cause this not to compile
-    I have inserted 3 logic errors that should cause the program to give wrong
-   results
-
-    First try to find an remove the bugs without looking in the book.
-    If that gets tedious, compare the code to that in the book (or posted source
-   code)
-
-    Happy hunting!
-
-*/
+// PPP - Chapter 5 - Drill
+// Fix calculator02.buggy.cpp
 
 #include <iostream>
 #include <stdexcept>
 
 using namespace std;
 
-// functions replacing std_lib_facilities.h
+//------------------ functions replacing std_lib_facilities.h ------------------
 
 void error(string s) { throw runtime_error(s); }
 
@@ -122,6 +105,7 @@ Token Token_stream::get() {
   case '5':
   case '6':
   case '7':
+  case '8':
   case '9': {
     cin.putback(ch); // put digit back into the input stream
     double val;
@@ -130,7 +114,7 @@ Token Token_stream::get() {
   }
   default:
     error("Bad token");
-    return 3;
+    return Token{'?'}; // never reached; just for compiler
   }
 }
 
@@ -158,9 +142,13 @@ double primary() {
   }
   case '8':         // we use '8' to represent a number
     return t.value; // return the number's value
+  case '-':         // unary minus
+    return -primary();
+  case '+': // unary plus (no-op)
+    return primary();
   default:
     error("primary expected");
-    return 3;
+    return 0; // never reached; just for compiler
   }
 }
 
@@ -244,3 +232,19 @@ int main() {
 }
 
 //------------------------------------------------------------------------------
+
+// This drill involves a series of modifications of a buggy program to turn it
+// from something useless into something reasonably useful.
+// [1] Take the calculator from the file calculator02buggy.cpp. Get it to
+// compile. You need to find and fix a few bugs. Those bugs are not in
+// the text in the book. Find the three logic errors deviously inserted in
+// calculator02buggy.cpp and remove them so that the calculator produces
+// correct results.
+// [2] Change the character used as the exit command from q to x.
+// [3] Change the character used as the print command from ; to =.
+// [4] Add a greeting line in main():
+// Click here to view code image
+// "Welcome to our simple calculator.
+// Please enter expressions using floating−point numbers."
+// [5] Improve that greeting by mentioning which operators are available
+// and how to print and exit.
