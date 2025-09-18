@@ -1,9 +1,11 @@
 // PPP - Chapter 3 - Exercise 12
+// Prime numbers from 1-100
 
 #include <iostream>
 #include <vector>
 using namespace std;
 
+// Vector storing found prime numbers (starts with 2)
 vector<int> primes = {2};
 
 // Checks if a number is prime
