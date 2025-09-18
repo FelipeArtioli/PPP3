@@ -1,9 +1,11 @@
 // PPP - Chapter 3 - Exercise 6
+// Simple calculator with operator names (+, -, *, /)
 
 #include <iostream>
 
 using namespace std;
 
+// Perform the arithmetic calculation based on operator
 double calculation(char op, double a, double b) {
   switch (op) {
   case '+':
@@ -13,15 +15,15 @@ double calculation(char op, double a, double b) {
   case '*':
     return a * b;
   case '/':
-    if (b == 0)
+    if (b == 0) // avoid division by zero
       return 0;
     else
       return a / b;
-  default:
+  default: // invalid operator
     return 0;
   }
 }
-
+// Return a string describing the operation name
 string operation_name(char op) {
   switch (op) {
   case '+':
@@ -43,6 +45,7 @@ int main() {
 
   cout << "Enter two numbers followed by an operator (e.g: 35.6 24.1 +):\n";
 
+ // Keep reading input until user ends program
   while (cin >> a >> b >> op) {
     double result = calculation(op, a, b);
     string name = operation_name(op);
