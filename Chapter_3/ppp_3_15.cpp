@@ -1,4 +1,5 @@
 // PPP - Chapter 3 - 15
+// (Mode Finder) Finds the most frequent number in a sequence
 
 #include <algorithm>
 #include <iostream>
@@ -11,11 +12,14 @@ int main() {
   int curr_count{1}, max_count{1}, mode{};
   int input{};
   cout << "Enter a set of numbers to find the mode of the sequence:\n";
+  // Read numbers until input ends (Ctrl+D / Ctrl+Z)
   while (cin >> input) {
-    if (input >= 0)
+    if (input >= 0) // Only accept non-negative numbers
       numbers.push_back(input);
   }
+  // Sort numbers to group duplicates together
   sort(numbers.begin(), numbers.end());
+  // Count occurrences to find mode
   for (int i = 1; i < numbers.size(); ++i) {
     if (numbers[i] == numbers[i - 1]) {
       ++curr_count;
@@ -24,9 +28,10 @@ int main() {
         mode = numbers[i];
       }
     } else {
-      curr_count = 1;
+      curr_count = 1; // Reset count when number changes
     }
   }
+  // Print result
   if (max_count == 1)
     cout << "No mode found (all numbers are unique).\n";
   else
