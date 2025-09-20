@@ -45,7 +45,7 @@ int main() {
 
   cout << "Enter two numbers followed by an operator (e.g: 35.6 24.1 +):\n";
 
- // Keep reading input until user ends program
+  // Keep reading input until user ends program
   while (cin >> a >> b >> op) {
     double result = calculation(op, a, b);
     string name = operation_name(op);
