@@ -1,4 +1,5 @@
 // PPP - Chapter 4 - 2
+// Find errors in Celsius to Kelvin converter
 
 #include <iostream>
 using namespace std;
