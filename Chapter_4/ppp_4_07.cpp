@@ -1,14 +1,17 @@
 // PPP - Chapter 4 - 7
+// Quadratic equation solver (With error handling and try/catch blocks)
 
 #include <cmath>
 #include <iostream>
 #include <stdexcept>
 using namespace std;
 
+// Solve quadratic equation
 void quadratic_equation(double a, double b, double c) {
   double delta = (b * b) - (4 * a * c);
 
   if (delta < 0) {
+    // Negative discriminant == no real solutions
     throw runtime_error("Equation with no real roots");
   }
 
@@ -18,9 +21,11 @@ void quadratic_equation(double a, double b, double c) {
   cout << "x = " << x1 << " and x' = " << x2 << '\n';
 }
 
+// Print the quadratic equation in readable format
 void print_result(double a, double b, double c) {
   cout << "Equation: ";
 
+  // Print coefficient for x²
   if (a == 1)
     cout << "x²";
   else if (a == -1)
@@ -28,6 +33,7 @@ void print_result(double a, double b, double c) {
   else if (a != 0)
     cout << a << "x²";
 
+  // Print coefficient for x
   if (b > 0) {
     if (b == 1)
       cout << "+x";
@@ -40,6 +46,7 @@ void print_result(double a, double b, double c) {
       cout << b << "x";
   }
 
+  // Print constant term
   if (c > 0)
     cout << "+" << c;
   else if (c < 0)
@@ -55,15 +62,19 @@ int main() {
           "and c:\n";
 
   cin >> a >> b >> c;
+
+  // Validate input: 'a' cannot be zero, otherwise it's not quadratic
   if (a == 0) {
     cerr << "'a' cannot be zero in a quadratic equation.\n";
     return 1;
   }
+  // Print equation in formatted way
   print_result(a, b, c);
 
   try {
+    // Attempt to solve and print solutions
     quadratic_equation(a, b, c);
-  } catch (exception &e) {
+  } catch (exception &e) { // Catch "no real roots" or other runtime errors
     cerr << e.what() << '\n';
     return 2;
   }
