@@ -1,4 +1,5 @@
 // PPP - Chapter 5 - 7
+// Number-to-Words Tokenizer
 
 #include <cctype>
 #include <iostream>
@@ -6,6 +7,7 @@
 #include <string>
 #include <vector>
 
+// Represents a digit and its position
 using namespace std;
 
 class Token {
@@ -13,13 +15,16 @@ class Token {
   int position;
 
 public:
+  // Supported unit kinds
   static const vector<string> kinds;
 
+  // Constructor validates digit
   Token(int v, int pos) : value{v}, position{pos} {
     if (v < 0 || v > 9)
       throw runtime_error("Invalid digit");
   }
 
+  // Helper: check if digit is zero
   bool isZero() const { return value == 0; }
 
   string toString() const {
@@ -31,6 +36,7 @@ public:
   }
 };
 
+// Definitions of units by position
 const vector<string> Token::kinds = {"ones", "tens", "hundreds", "thousands"};
 
 // Generate a vector of tokens
@@ -46,11 +52,11 @@ vector<Token> gen_tokens(const string &input) {
     if (!isdigit(c))
       throw runtime_error("Only digits are allowed");
 
-    int digit = c - '0';
-    int pos = n - i - 1;
+    int digit = c - '0'; // Convert char to int
+    int pos = n - i - 1; // Position from right (0 = ones)
 
     Token t(digit, pos);
-    if (!t.isZero()) // Skip zeroes
+    if (!t.isZero()) // Skip zeros
       tokens.push_back(t);
   }
   return tokens;
@@ -60,7 +66,7 @@ vector<Token> gen_tokens(const string &input) {
 void print(const vector<Token> &tokens) {
   for (int i = 0; i < tokens.size(); ++i) {
     cout << tokens[i].toString();
-    if (i != tokens.size() - 1)
+    if (i != tokens.size() - 1) // Add "and" between tokens
       cout << " and ";
   }
 }
