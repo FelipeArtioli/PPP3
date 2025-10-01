@@ -1,7 +1,6 @@
 // PPP - Chapter 5 - 6
 // Bull and Cows (now with letters)
 
-#include <algorithm>
 #include <cctype>
 #include <exception>
 #include <iostream>

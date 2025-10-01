@@ -1,4 +1,5 @@
 // PPP - Chapter 5 - 8
+// Permutations and Combinations Calculator:
 
 #include <iostream>
 #include <limits> // for numeric_limits
@@ -10,17 +11,19 @@ long long factorial(int x) {
     throw runtime_error("Factorial not defined for negative numbers.");
   long long result = 1;
   for (int i = 2; i <= x; ++i) {
-    result *= i;
+    result *= i; // multiply sequentially from 2 to x
   }
   return result;
 }
 
+// Compute permutation: P(a, b) = a! / (a-b)!
 long long permutation(int a, int b) {
   if (b > a)
     throw runtime_error("b cannot be larger than a for permutations.");
   return factorial(a) / factorial(a - b);
 }
 
+// Compute combination: C(a, b) = a! / (b! * (a-b)!)
 long long combination(int a, int b) {
   if (b > a)
     throw runtime_error("b cannot be larger than a for combinations.");
@@ -33,21 +36,24 @@ int read_int(const string &prompt) {
   cout << prompt;
   while (!(cin >> x) || x <= 0) {
     cout << "Please enter a positive integer: ";
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.clear();                                         // reset error flags
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard bad input
   }
   return x;
 }
 
 int main() {
   try {
+    // Get input values
     int a = read_int("Enter the first number (a): ");
     int b = read_int("Enter the second number (b): ");
 
+    // Ask if permutation or combination
     cout << "Permutation (p) or Combination (c)? ";
     char choice;
     cin >> choice;
 
+    // Decide calculation type
     switch (tolower(choice)) {
     case 'p':
       cout << "P(" << a << ", " << b << ") = " << permutation(a, b) << '\n';
@@ -59,6 +65,7 @@ int main() {
       cout << "Invalid choice. Please enter 'p' or 'c'.\n";
     }
   } catch (exception &e) {
+    // Catch any runtime errors (invalid math, negative inputs, etc.)
     cerr << "Error: " << e.what() << '\n';
     return 1;
   }
